@@ -79,7 +79,11 @@ const handleVoice = (text) => {
   }
 
   if (handledText.includes('what time')) {
-    const textToSpeech = moment().format('hh:mm A');
+    const hour = moment().hours();
+    const minute = moment().minutes();
+    const formattedTime = moment(`${hour}:${minute}, hh:mm A`)
+    console.log(formattedTime);
+    const textToSpeech = `${moment().hours()} ${moment().minutes()}`;
     speak(textToSpeech);
     return;
   }
